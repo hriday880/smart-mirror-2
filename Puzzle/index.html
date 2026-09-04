@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Puzzle Cam — Gesture Capture</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <div id="stage">
+    <video id="webcam" playsinline autoplay muted></video>
+    <canvas id="sceneCanvas"></canvas>
+
+    <div class="hud-top">
+      <div class="brand">PUZZLE·CAM <small>hand-frame capture</small></div>
+      <div class="status-pill">
+        <span id="statusDot" class="status-dot"></span>
+        <span id="statusText">starting camera…</span>
+      </div>
+    </div>
+
+    <div id="progressBadge" class="progress-badge">
+      <span id="progressText">0 / 9 pieces placed</span>
+    </div>
+
+    <div id="loadingOverlay">
+      <div class="loader-text" id="loaderText">loading HandLandmarker model…</div>
+      <div class="loader-bar"></div>
+      <button type="button" id="loaderRetry" class="loader-retry hidden">retry</button>
+    </div>
+
+    <div id="errorBanner"></div>
+  </div>
+
+  <div id="qrOverlay" class="qr-overlay hidden">
+    <div class="qr-card">
+      <div class="qr-title">Scan to Download!</div>
+      <div id="qrcodeCanvas"></div>
+      <div class="qr-countdown" id="qrCountdown">10</div>
+      <div class="qr-subtitle">Get your photo before it resets</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Local QR library (davidshimjs/qrcodejs) - no CDN dependency.
+     The previous CDN path did not exist in the npm package and 404'd,
+     which broke photo saving. Fallback CDN kept as a safety net. -->
+<script src="./vendor/qrcode.min.js"
+        onerror="var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';document.head.appendChild(s);"></script>
+<script type="module" src="./app.js?v=2"></script>
+</body>
+</html>

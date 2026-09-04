@@ -1,0 +1,77 @@
+2026-08-14 19:41:17,438 [INFO] [DeliveryServer] DeliveryServer active at http://127.0.0.1:8950 (Serving '/var/folders/s1/m5d4kqbs33s5xhtb744qn8rm0000gn/T/tmpp02iwpf9')
+================================================================================
+FORENSIC INTEGRITY AUDIT - SMART MIRROR HAND GESTURE PHOTO CAPTURE
+================================================================================
+
+[CHECK 1] Cryptographic SHA-256 Hashes of 7 Original Source Files:
+  ✓ main.py                   | Size:  2337 bytes | SHA256: 050357ed1349451c5862f12f028f1fc31f65ff7b04cfe300843584af59004243
+  ✓ filters.py                | Size:  3367 bytes | SHA256: 91fbc360dc23de27c10b98655c7fc8cf47fad03c2badc60f9844c45d2a2fdcf9
+  ✓ geometry.py               | Size:  1871 bytes | SHA256: e1b0d649d3a0d270d2a9bdc8c5109bcb6c323d47f42677b1bd26cbaf888bde3c
+  ✓ hand_tracking.py          | Size:   828 bytes | SHA256: 0940d1f4350425c15dcd186e0acfe4e108dce748a1b2ff552c8caa2c61d3771e
+  ✓ Launch Filters.command    | Size:    73 bytes | SHA256: 5db63ee1c60b7e6b1102081376dcd5f6b1e4e7673c56696e371c567565a8d48d
+  ✓ requirements.txt          | Size:    40 bytes | SHA256: c5bcfe66bb57624d8f115df3d3b4b8e95d9373298308b78698c22b4b8706ee5b
+  ✓ README.md                 | Size:  3033 bytes | SHA256: 7fadbe289a2e05d822b92df9719bbfa8e84c28b1aa74f6a7598e04c695e90543
+
+[CHECK 2] Static Code Analysis for Hardcoded Outputs, Mock Results, and Facades:
+  ✓ gesture_detector_test.py  : CLEAN (No suspicious mock hardcoding found)
+  ✓ delivery_server_test.py   : CLEAN (No suspicious mock hardcoding found)
+  ✓ main_test.py              : CLEAN (No suspicious mock hardcoding found)
+
+[CHECK 3] Mathematical Landmark Calculation Verification:
+  • Joint Angle (Orthogonal 90°): 90.0000° -> PASS
+  • Joint Angle (Collinear 180°):  180.0000° -> PASS
+  • Joint Angle (Diagonal 45°):   45.0000° -> PASS
+  • Euclidean Distance ((0,0) to (3,4)): 5.0000 -> PASS
+  • Palm Scale Metric S for scale=0.3: 0.1950 (expected ~0.195) -> PASS
+  • Gesture 'peace         ': Detected=True  Expected=True  -> PASS
+  • Gesture 'open_palm     ': Detected=False Expected=False -> PASS
+  • Gesture 'fist          ': Detected=False Expected=False -> PASS
+  • Gesture 'portal        ': Detected=False Expected=False -> PASS
+  • Gesture 'pointing      ': Detected=False Expected=False -> PASS
+  • Gesture 'three_fingers ': Detected=False Expected=False -> PASS
+  • Gesture 'four_fingers  ': Detected=False Expected=False -> PASS
+  • Scale Invariance across S in [0.05, 0.1, 0.25, 0.5, 0.7]: PASS
+  • In-Plane 360° Tilt Invariance across [-180, -135, -90, -45, -30, 0, 30, 45, 90, 135, 180]: PASS
+
+[CHECK 4] Image Capture, Filter Processing & Async JPEG Persistence:
+  ✓ Filter [0] filtro_grid     : Output Valid (Diff=   2855286 L1)
+  ✓ Filter [1] filtro_1        : Output Valid (Diff=  21967582 L1)
+  ✓ Filter [2] filtro_2        : Output Valid (Diff=  42652875 L1)
+  ✓ Filter [3] filtro_3        : Output Valid (Diff=   4131102 L1)
+  ✓ Filter [4] filtro_5        : Output Valid (Diff=  26433519 L1)
+  ✓ Filter [5] filtro_6        : Output Valid (Diff=   7750229 L1)
+  ✓ Filter [6] filtro_blanco   : Output Valid (Diff=  22088283 L1)
+  ✓ Filter [7] filtro_rosa     : Output Valid (Diff=  27227290 L1)
+  • All 8 Shader Filters Operational: PASS
+  • AsyncImageSaver: File Exists=True (15029 B), Decodable=True -> PASS
+
+[CHECK 5] QR Code Generation & Matrix Scannability Verification:
+  • QR Matrix Generated: Shape=(180, 180, 3), Dtype=uint8
+  • Optical QR Decode String: 'http://192.168.1.120:8000/view/capture_20260814_120000_123_edges.jpg'
+  • QR Decode Match Ground Truth: PASS
+  • HUD Preview Card Composite: Rendered (28155847 L1 pixel delta) -> PASS
+
+[CHECK 6] Live HTTP Delivery Server & Protocol Compliance:
+  • Server Bound to Port: 8950
+Traceback (most recent call last):
+  File "/Users/hriday/Desktop/smart mirror #2/Filters/.agents/auditor_1/run_audit.py", line 248, in <module>
+    photo_req = urllib.request.urlopen(f"http://127.0.0.1:{server_port}/photo/{test_photo_fn}")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/local/Cellar/python@3.12/3.12.13_4/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 400: Bad Request
