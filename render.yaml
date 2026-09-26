@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: ar-portal-filters
+    env: docker
+    rootDir: Filters
+    plan: free
+    port: 7860
